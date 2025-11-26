@@ -1991,6 +1991,7 @@ function ng_try() {
 // ------------- Monopoly -------------
 const neutropolisGame = document.getElementById('neutropolisGame');
 if (!db || !currentUser) neutropolisGame.classList.add('hidden');
+if (db && currentUser) neutropolisGame.classList.remove('hidden');
 const ngmi = document.getElementById('ngmi');
 const jngr = document.getElementById('jngr');
 const cngr = document.getElementById('cngr');
@@ -2053,7 +2054,7 @@ async function crngr() {
       log: ["Room created"]
     }
   };
-  await set(ref(db, "rooms/" + code), roomData);
+  db.ref(`rooms/${code}`).set(roomData);
   window.ngrRoomCode = code;
   cngr.classList.add('hidden');
   ngrc.classList.remove('hidden');
