@@ -2103,7 +2103,7 @@ input[type="checkbox"]:checked+.slider-switch::after {
 }
 
 .sll-visible {
-  display: flex;
+  display: block;
   justify-content: stretch;
   opacity: 1;
   pointer-events: inherit;
