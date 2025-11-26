@@ -10,6 +10,7 @@ const firebaseConfig = {
 };
 let db = null;
 let currentUser = null;
+let currentUserName = null;
 firebase.initializeApp(firebaseConfig);
 firebase.appCheck().activate('6LdbiwcsAAAAAI1ZW4dAvR9yJuDT0sYBAaMtDmyF',true);
 const auth = firebase.auth();
@@ -136,6 +137,10 @@ function startApp(user) {
         .catch(err => console.error("Write failed:", err));
         loadElementData();
         neutropolisGame.classList.remove('hidden');
+      db.ref(`users/${user.uid}/username`).on("value", snapshot => {
+        console.log("Username:", snapshot.val());
+        currentUserName = snapshot.val();
+      });
       db.ref(`users/${user.uid}/test`).on("value", snapshot => {
         console.log("Database value:", snapshot.val());
       });
@@ -2039,10 +2044,10 @@ async function crngr() {
     allowDoubleRentSet: document.getElementById('ngrAllowDoubleRentSet').checked,
     allowEvenBuild: document.getElementById('ngrAllowEvenBuild').checked,
     allowRandomOrder: document.getElementById('ngrAllowRandomPlayerOrder').checked,
-    createdBy: currentUser.username,
+    createdBy: currentUserName,
     players: {
-      [currentUser.username]: {
-        name: currentUser.username || "Player",
+      [currentUserName]: {
+        name: currentUserName || "Player",
         money: 1500,
         position: 0, 
         properties: {}
@@ -2050,7 +2055,7 @@ async function crngr() {
     },
     gameState: {
       started: false,
-      turn: currentUser.username,
+      turn: currentUserName,
       log: ["Room created"]
     }
   };
@@ -2355,7 +2360,7 @@ function gameOver() {
     .then(snapshot => {
       snakePlayerNameValue = snapshot.val();
     });
-    db.ref(`highScores/snakeGame/${currentUser.username}`).set({
+    db.ref(`highScores/snakeGame/${currentUserName}`).set({
       name: snakePlayerNameValue,
       score: snakeScore
     });
@@ -2937,7 +2942,7 @@ function jetShooterGameOver() {
       .then(snapshot => {
         jetPlayerNameValue = snapshot.val();
       });
-      db.ref(`highScores/jetShooterGame/${currentUser.username}`).set({
+      db.ref(`highScores/jetShooterGame/${currentUserName}`).set({
         name: jetPlayerNameValue,
         score: jetShooterScore
       });
