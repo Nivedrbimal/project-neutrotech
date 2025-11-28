@@ -1,4 +1,3 @@
-
 firebase.initializeApp(def.firebaseConfig);
 firebase.appCheck().activate('6LdbiwcsAAAAAI1ZW4dAvR9yJuDT0sYBAaMtDmyF',true);
 const auth = firebase.auth();
@@ -500,14 +499,41 @@ async function crngr() {
   document.getElementById("ngbj").innerText = code;
   loadRoom(window.ngrRoomCode);
 }
+async function joinngr() {
+  if (!def.db || !def.currentUser) return;
+  const ngrJoinCode = document.getElementById('ngrJoinCode').value.trim().toUpperCase();
+  const roomSnap = await def.db.ref(`rooms/${ngrJoinCode}`).once('value');
+  const room = roomSnap.val();
+  const jngrOut = document.getElementById('jngrOut');
+  if (!room) {
+    jngrOut.textContent = "Room not found!";
+    return;
+  }
+  if (Object.keys(room.players).length >= room.maxPlayers) {
+    jngrOut.textContent = "Room is full!";
+    return;
+  }
+  room.players[def.currentUserName] = {
+    name: def.currentUserName || "Player",
+    money: 1500,
+    position: 0,
+    properties: {}
+  };
+  await def.db.ref(`rooms/${ngrJoinCode}/players`).set(room.players);
+  window.ngrRoomCode = ngrJoinCode;
+  def.jngr.classList.add('hidden');
+  def.ngrc.classList.remove('hidden');
+  def.ngrc.classList.add('visible');
+  loadRoom(window.ngrRoomCode);
+}
 function loadRoom(code) {
-  def.db.ref(`rooms/${code}`).onValue(snap => {
+  def.db.ref(`rooms/${code}`).once('value').then(snap => {
     const room = snap.val();
     if (!room) return;
-    applySettings(room);
     updatePlayerList(room.players);
-    updateGameState(room.gameState);
-    loadBoardProperties(room.properties || {});
+    // applySettings(room);
+    // updateGameState(room.gameState);
+    // loadBoardProperties(room.properties || {});
   });
 }
 function updatePlayerList(players) {
@@ -515,10 +541,10 @@ function updatePlayerList(players) {
   container.innerHTML = "";
   Object.entries(players).forEach(([id, p]) => {
     const div = document.createElement("div");
-    div.className = "ng-player";
+    div.className = "ngrcplp";
     div.innerHTML = `
-      <span class="name">${p.name}</span>
-      <span class="money">₦${p.money}</span>
+      <span class="ngrcplpn muted">${p.name}</span>
+      <span class="ngrcplpm muted">₦${p.money}</span>
     `;
     container.appendChild(div);
   });
