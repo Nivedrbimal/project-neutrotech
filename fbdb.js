@@ -512,7 +512,7 @@ async function joinngr() {
     jngrOut.textContent = "Room not found!";
     return;
   }
-  if (def.currentUserName != room.players[def.currentUserName]) 
+  if (def.currentUserName === room.players[def.currentUserName]) 
     jngrOut.textContent = "Rejoining room.";
   else if (Object.keys(room.players).length >= room.maxPlayers) {
     jngrOut.textContent = "Room is full!";
