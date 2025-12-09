@@ -1,5 +1,6 @@
+// self.FIREBASE_APPCHECK_DEBUG_TOKEN = "09FF694C-E480-43B7-88D7-F22BCC9151AF";
 firebase.initializeApp(def.firebaseConfig);
-firebase.appCheck().activate('6LdbiwcsAAAAAI1ZW4dAvR9yJuDT0sYBAaMtDmyF',true);
+firebase.appCheck().activate('6LdEjSYsAAAAAJCfLN8AkM1EOhlr6A89QXr3M39q',true);
 const auth = firebase.auth();
 auth.onAuthStateChanged(user => {
   if (user) {
@@ -432,7 +433,32 @@ function ptInfoClear() {
 
 // ========== GAMES ==========
 
-// // ------------- Monopoly -------------
+// ----------- Test Maker Taker -----------
+
+if (!def.db || !def.currentUser) document.getElementById('tMTcard').style.display = "none";
+document.getElementById('tMTTM').style.display = "none";
+document.getElementById('tMTTT').style.display = "none";
+const tMT = document.getElementById('tMT');
+function tMTms() {
+  const tMTMoT = document.getElementById('tMTMoT').value;
+  if (tMTMoT === 'tMTM') {
+    tMTMoT.value = 'tMTs';
+    tMT.style.display = "none";
+    document.getElementById('tMTTM').style.display = "flex";
+  }
+  else if (tMTMoT === 'tMTT') {
+    tMTMoT.value = 'tMTs';
+    tMT.style.display = "none";
+    document.getElementById('tMTTT').style.display = "flex";
+  }
+}
+function tMTB() {
+  tMT.style.display = "block";
+  document.getElementById('tMTTM').style.display = "none";
+  document.getElementById('tMTTT').style.display = "none";
+}
+
+// ------------- Monopoly -------------
 // if (!def.db || !def.currentUser) def.neutropolisGame.classList.add('hidden');
 [def.jngr, def.cngr, def.ngrc].forEach(el => {
   if (el) {
@@ -579,13 +605,19 @@ function ngrcplu(players) {
 function ngrcpmu(players) {
   document.querySelectorAll('.ngbcpp').forEach(el => el.remove());
   Object.values(players).forEach((player) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = "ngbcpp-wrapper";
     const playerCharacter = document.createElement("div");
-    const pColor = player.color || 'red'; 
-    playerCharacter.className = `ngbcpp ${pColor}`;
+    playerCharacter.className = `ngbcpp ${player.color}`;
+    wrapper.append(playerCharacter);
     const targetDiv = document.getElementById(`ngbpp${player.position}`);
     if (targetDiv) {
-      targetDiv.append(playerCharacter);
-    } 
+      targetDiv.append(wrapper);
+      if (player.position < 10) wrapper.style.transform = "rotate(-90deg)";
+      else if (player.position < 20) wrapper.style.transform = "rotate(0deg)";
+      else if (player.position < 30) wrapper.style.transform = "rotate(90deg)";
+      else if (player.position < 40) wrapper.style.transform = "rotate(180deg)";
+    }
     else {
       console.warn(`Board position element #${player.position} not found.`);
     }

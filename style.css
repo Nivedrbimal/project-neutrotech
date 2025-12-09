@@ -1377,12 +1377,78 @@ input[type="checkbox"]:checked+.slider-switch::after {
   text-align: center;
   justify-content: stretch;
 }
+.ngbphc>div[id*="ngbpp"]{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  min-height:2vw;
+  height:2vw;
+  max-height:2vw;
+  width:5vw;
+  min-width:2vw;
+}
+div[id*="ngbpp"]{
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  min-height:2.5vw;
+  min-width:2.5vw;
+  height:100%;
+  width:100%;
+  position:absolute;
+}
 .ngbcpp{
   content:"";
   border-radius:50%;
-  width: 2vh;
-  height:2vh;
-
+  width: 1.5vw;
+  height:1.5vw;
+  position:relative;
+  margin-bottom:-0.25vw;
+}
+.ngbcpp::after {
+  content:"●●";
+  font-size: 10px;
+  font-weight: 1000;
+  color: black;
+  position:absolute;
+  right:20%;
+  bottom:5%;
+}
+.ngbcpp.hl{
+  width: 2.5vw;
+  height:2.5vw;
+}
+.ngbcpp.hl::after {
+  font-size: 15px;
+}
+.ngbcpp.red {
+  background-color:red;
+}
+.ngbcpp.blue {
+  background-color:blue;
+}
+.ngbcpp.green {
+  background-color:green;
+}
+.ngbcpp.yellow {
+  background-color:yellow;
+}
+.ngbcpp.orange {
+  background-color:orange;
+}
+.ngbcpp.purple {
+  background-color:purple;
+}
+.ngbcpp.magenta {
+  background-color:magenta;
+}
+.ngbcpp.maroon {
+  background-color:maroon;
+}
+.ngbcpp.cyan {
+  background-color:cyan;
 }
 #ngbst,
 #ngbvj,
@@ -1424,10 +1490,10 @@ input[type="checkbox"]:checked+.slider-switch::after {
 #ngbphr {
   writing-mode: sideways-lr;
 }
-#ngbphr,
-#ngbphl,
-#ngbpht,
-#ngbphb {
+.ngbphr,
+.ngbphl,
+.ngbpht,
+.ngbphb {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -1435,12 +1501,16 @@ input[type="checkbox"]:checked+.slider-switch::after {
   text-align: center;
   height: 100%;
   width: 100%;
+  position:relative;
 }
 .ngbtp,
 .ngbbp {
   aspect-ratio: 2/3;
   width: 4vw;
   height: 6.5vw;
+}
+div[id*="ngbp"]:not(.ngblp):not(.ngbrp):not(.ngbbp):not(.ngbtp) {
+  position: absolute;
 }
 .ngblp,
 .ngbrp {
@@ -1495,11 +1565,12 @@ input[type="checkbox"]:checked+.slider-switch::after {
   top: 25%;
   right: 0.5vw;
 }
-.ngbapng {
-  width:100%;
-  height:100%;
+.ngbapngt {
+  rotate:180deg; 
+  position:absolute;
+  top: 1vw;
+  
 }
-.ngbapngt {rotate:180deg;}
 .ngbapngr {rotate:-90deg;}
 .ngbapngl {rotate:90deg;}
 .ngbspss {
@@ -1835,54 +1906,190 @@ input[type="checkbox"]:checked+.slider-switch::after {
 
 .ngbps1 {
   background: #b88aff;
-  height: 1vw !important;
-  width: calc(4vw- 5px);
 }
 
 .ngbps2 {
   background: #87d1ff;
-  height: 1vw !important;
-  width: calc(4vw - 9px);
 }
 
 .ngbps3 {
   background: #9aff8a;
-  width: 1vw !important;
-  height: calc(4vw - 9px);
 }
 
 .ngbps4 {
   background: #ffe066;
-  width: 1vw !important;
-  height: calc(4vw - 9px);
 }
 
 .ngbps5 {
   background: #ffa04e;
-  height: 1vw !important;
-  width: calc(4vw - 9px);
 }
 
 .ngbps6 {
   background: #ff6f6f;
-  height: 1vw !important;
-  width: calc(4vw - 9px);
 }
-
 .ngbps7 {
   background: #90c1ff;
-  width: 1vw !important;
-  height: calc(4vw - 9px);
 }
 
 .ngbps8 {
   background: #c4c4c4;
+}
+.ngbps1, .ngbps2, .ngbps5, .ngbps6{
+  height: 1vw !important;
+  width: calc(4vw - 9px);
+}
+.ngbps3,.ngbps4,.ngbps7,.ngbps8{
   width: 1vw !important;
   height: calc(4vw - 9px);
 }
+div[class*="ngbps"]{
+  position:absolute;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+.ngbps1, .ngbps2{
+  bottom:0;
+}
+.ngbps3, .ngbps4{
+  left:0;
+}
+.ngbps5, .ngbps6{
+  top:0;
+}
+.ngbps7, .ngbps8{
+  right:0;
+}
+.ngbppv {
+  position:absolute;
+}
+#ngba1p{
+  width:100%;
+  right:0;
+  top:0;
+}
+#ngba2p, 
+#ngbp6p,
+#ngbp7p,
+#ngbp8p,
+#ngbp9p,
+#ngbp10p,
+#ngbp11p{
+  height:100%;
+  right:0;
+  bottom:0;
+  writing-mode: sideways-lr;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+#ngba3p, 
+#ngbp12p,
+#ngbp13p,
+#ngbp14p,
+#ngbp15p,
+#ngbp16p,
+#ngbp17p{
+  width:100%;
+  right:0;
+  bottom:0;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+#ngba4p, 
+#ngbp18p,
+#ngbp19p,
+#ngbp20p,
+#ngbp21p,
+#ngbp22p {
+  height:100%;
+  left:0;
+  bottom:0;
+  writing-mode: sideways-rl;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+#ngba1n,
+#ngba2n,
+#ngba3n,
+#ngba4n{
+  position:absolute;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+#ngba1n{
+  width:100%;
+  bottom:0;
+  left:0;
+}
+#ngba2n{
+  writing-mode: sideways-lr;
+  height:100%;
+  left:0;
+  bottom:0;
+}
+#ngba3n{
+  width:100%;
+  top:0;
+  left:0;
+}
+#ngba4n{
+  writing-mode: sideways-rl;
+  height:100%;
+  right:0;
+  bottom:0;
+}
+#ngbp1n,
+#ngbp2n,
+#ngbp3n,
+#ngbp4n,
+#ngbp5n{
+  width:100%;
+  bottom:1vw;
+  left:0;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+}
+#ngbp6n,
+#ngbp7n,
+#ngbp8n,
+#ngbp9n,
+#ngbp10n,
+#ngbp11n{
+  writing-mode: sideways-lr;
+  height:100%;
+  left:1vw;
+  bottom:0;
+}
+#ngbp12n,
+#ngbp13n,
+#ngbp14n,
+#ngbp15n,
+#ngbp16n,
+#ngbp17n{
+  width:100%;
+  top:1vw;
+  left:0;
+}
 
-
-
+#ngbp18n,
+#ngbp19n,
+#ngbp20n,
+#ngbp21n,
+#ngbp22n{
+  writing-mode: sideways-rl;
+  height:100%;
+  right:1vw;
+  bottom:0;
+}
+.ngbapng {
+  width:4vw;
+  height:4vw;
+}
 
 
 /*----- Snake Game ----*/

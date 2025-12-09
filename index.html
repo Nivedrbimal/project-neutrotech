@@ -2041,6 +2041,54 @@
       <div class="card" role="region" aria-labelledby="sudokuTitle">
         <h3 id="sudokuTitle">Sudoku</h3>
       </div> -->
+      <!-- Test Maker Taker -->
+      <div class="card" id="tMTcard" role="region" aria-labelledby="testMakerTakerTitle">
+        <div id="tMT">
+          <h3 id="testMakerTakerTitle">Test Maker Taker</h3>
+          <p class="muted">
+            Want to create a test for your students or for yourself? Or need to take a test made by someone? Select the
+            mode and continue.
+          </p><br>
+          <label><span class="muted">Mode</span>
+            <select id="tMTMoT" onchange="tMTms()">
+              <option value="tMTs">Select</option>
+              <option value="tMTM">Make a test</option>
+              <option value="tMTT">Take a test</option>
+            </select>
+          </label>
+        </div>
+        <div id="tMTTM" style="display:flex; flex-direction:column">
+          <div class="row">
+            <label><span class="muted">Enter the total number of available questions</span>
+              <input id="tMTaq" type="number" value="10" />
+            </label>
+            <label><span class="muted">Enter the number of given questions</span>
+              <input id="tMTvq" type="number" value="5" />
+            </label>
+            <label><span class="muted" style="color:none;"></span><br>
+              <button onclick="tMTTMC()" class="btn">Create</button>
+            </label>
+            <label><span class="muted" style="color:none;"></span><br>
+              <button onclick="tMTB()" class="btn">Back</button>
+            </label>
+          </div>
+          <div id="tMTTMout" class="output mono"></div>
+        </div>
+        <div id="tMTTT" style="display:flex; flex-direction:column">
+          <div class="row">
+            <label id="tMTTTidh"><span class="muted">Enter your test id</span>
+              <input id="tMTTTid" type="text" placeholder="ab12" />
+            </label>
+            <label><span class="muted" style="color:none;"></span><br>
+              <button class="btn" onclick="tMTTTS()">Start</button>
+            </label>
+            <label><span class="muted" style="color:none;"></span><br>
+              <button onclick="tMTB()" class="btn">Back</button>
+            </label>
+          </div>
+          <div id="tMTTTout" class="output mono"></div>
+        </div>
+      </div>
 
       <!-- Neutropolis -->
       <div id="neutropolisGame" class="card">
@@ -2197,258 +2245,273 @@
           </div>
           <div id="ngb">
             <div id="ngbst">
-              <div id="ngbphc">WhiteHole<br>––––></div>
-              <div id="ngbpp0"></div>
+              <div class="ngbphc">WhiteHole<br>––––><br>
+                <div id="ngbpp0"></div>
+              </div>
             </div>
             <div id="ngbp1" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngbp1p">₦60</div>
-                <div id="ngbp1n">Vesta</div>
-                <div id="ngbp1h" class="ngbph">
-                  <div id="ngbp1h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp1h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp1h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp1h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp1h5"><img class="ngbspss" src="ngbss.png"></div>
-                </div>
-                <div class="ngbps1"></div>
+              <div class="ngbpht">
+                <div id="ngbp1p" class="ngbppv">₦60</div>
                 <div id="ngbpp1"></div>
+                <div id="ngbp1n">Vesta</div>
+                <div class="ngbps1">
+                  <div id="ngbp1h" class="ngbph">
+                    <div id="ngbp1h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp1h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp1h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp1h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp1h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="ngbwc1" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngbwc1n">Wormhole</div>
-                <div id="ngbwc1i"><img src="ngbwc.png"></div>
+              <div class="ngbpht">
                 <div id="ngbpp2"></div>
+                <div id="ngbwc1i"><img src="ngbwc.png"></div>
+                <div id="ngbwc1n">Space Loot</div>
               </div>
             </div>
             <div id="ngbp2" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngbp2p">₦60</div>
-                <div id="ngbp2n">Pallas</div>
-                <div id="ngbp2h" class="ngbph">
-                  <div id="ngbp2h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp2h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp2h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp2h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp2h5"><img class="ngbspss" src="ngbss.png"></div>
-                </div>
-                <div class="ngbps1"></div>
+              <div class="ngbpht">
+                <div id="ngbp2p" class="ngbppv">₦60</div>
                 <div id="ngbpp3"></div>
+                <div id="ngbp2n">Pallas</div>
+                <div class="ngbps1">
+                  <div id="ngbp2h" class="ngbph">
+                    <div id="ngbp2h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp2h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp2h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp2h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp2h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="ngbit" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngbitn">Cosmo Tax</div>
+              <div class="ngbpht">
                 <div id="ngbitv">10%</div>
                 <div id="ngbpp4"></div>
+                <div id="ngbitn">Cosmo Tax</div>
               </div>
             </div>
             <div id="ngba1" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngba1p">₦200</div>
+              <div class="ngbpht">
+                <div id="ngba1p" class="ngbppv">₦200</div>
+                <div id="ngbpp5"></div>
                 <div id="ngba1i"><img class="ngbapng ngbapngt" src="ngba.png"></div>
                 <div id="ngba1n">NASA</div>
-                <div id="ngbpp5"></div>
               </div>
             </div>
             <div id="ngbp3" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngbp3n">Ceres</div>
-                <div id="ngbp3p">₦100</div>
-                <div id="ngbp3h" class="ngbph">
-                  <div id="ngbp3h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp3h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp3h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp3h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp3h5"><img class="ngbspss" src="ngbss.png"></div>
-                </div>
-                <div class="ngbps2"></div>
+              <div class="ngbpht">
+                <div id="ngbp3p" class="ngbppv">₦100</div>
                 <div id="ngbpp6"></div>
+                <div id="ngbp3n">Ceres</div>
+                <div class="ngbps2">
+                  <div id="ngbp3h" class="ngbph">
+                    <div id="ngbp3h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp3h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp3h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp3h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp3h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="ngbrc1" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngbrc1n">Rift</div>
-                <div id="ngbrc1i"><img src="ngbrc.png"></div>
+              <div class="ngbpht">
                 <div id="ngbpp7"></div>
+                <div id="ngbrc1i"><img src="ngbrc.png"></div>
+                <div id="ngbrc1n">Rift</div>
               </div>
             </div>
             <div id="ngbp4" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngbp4n">Haumea</div>
-                <div id="ngbp4p">₦100</div>
-                <div id="ngbp4h" class="ngbph">
-                  <div id="ngbp4h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp4h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp4h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp4h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp4h5"><img class="ngbspss" src="ngbss.png"></div>
-                </div>
-                <div class="ngbps2"></div>
+              <div class="ngbpht">
+                <div id="ngbp4p" class="ngbppv">₦100</div>
                 <div id="ngbpp8"></div>
+                <div id="ngbp4n">Haumea</div>
+                <div class="ngbps2">
+                  <div id="ngbp4h" class="ngbph">
+                    <div id="ngbp4h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp4h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp4h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp4h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp4h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="ngbp5" class="ngbtp">
-              <div id="ngbpht">
-                <div id="ngbp5n">Eris</div>
-                <div id="ngbp5p">₦120</div>
-                <div id="ngbp5h" class="ngbph">
-                  <div id="ngbp5h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp5h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp5h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp5h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp5h5"><img class="ngbspss" src="ngbss.png"></div>
-                </div>
-                <div class="ngbps2"></div>
+              <div class="ngbpht">
+                <div id="ngbp5p" class="ngbppv">₦120</div>
                 <div id="ngbpp9"></div>
+                <div id="ngbp5n">Eris</div>
+                <div class="ngbps2">
+                  <div id="ngbp5h" class="ngbph">
+                    <div id="ngbp5h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp5h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp5h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp5h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp5h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div id="ngbvj">
-              <div id="ngbphc">
-                <div id="ngbj"></div>
+              <div class="ngbphc">
+                <div id="ngbj">
+                  <div id="ngbpp41"></div>
+                </div>
                 <div id="ngbvjv">Event</div>
-                <div id="ngbvjj">Horizon</div>
                 <div id="ngbpp10"></div>
+                <div id="ngbvjj">Horizon</div>
               </div>
             </div>
             <div id="ngbp6" class="ngbrp">
-              <div id="ngbphr">
-                <div class="ngbps3"></div>
-                <div id="ngbp6h" class="ngbph">
-                  <div id="ngbp6h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp6h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp6h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp6h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp6h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphr">
+                <div class="ngbps3">
+                  <div id="ngbp6h" class="ngbph">
+                    <div id="ngbp6h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp6h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp6h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp6h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp6h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp6n">Europa</div>
-                <div id="ngbp6p">₦120</div>
                 <div id="ngbpp11"></div>
+                <div id="ngbp6p" class="ngbppv">₦120</div>
               </div>
             </div>
             <div id="ngbsg" class="ngbrp">
-              <div id="ngbphr">
+              <div class="ngbphr">
                 <div id="ngbsgn">SpaceX Grid</div>
                 <div id="ngbsgi"><img class="ngbspss" src="ngbsg.png"></div>
-                <div id="ngbv">₦150</div>
                 <div id="ngbpp12"></div>
+                <div id="ngbv">₦150</div>
               </div>
             </div>
             <div id="ngbp7" class="ngbrp">
-              <div id="ngbphr">
-                <div class="ngbps3"></div>
-                <div id="ngbp7h" class="ngbph">
-                  <div id="ngbp7h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp7h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp7h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp7h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp7h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphr">
+                <div class="ngbps3">
+                  <div id="ngbp7h" class="ngbph">
+                    <div id="ngbp7h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp7h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp7h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp7h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp7h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp7n">Enceladus</div>
-                <div id="ngbp7p">₦140</div>
                 <div id="ngbpp13"></div>
+                <div id="ngbp7p" class="ngbppv">₦140</div>
               </div>
             </div>
             <div id="ngbp8" class="ngbrp">
-              <div id="ngbphr">
-                <div class="ngbps3"></div>
-                <div id="ngbp8h" class="ngbph">
-                  <div id="ngbp8h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp8h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp8h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp8h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp8h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphr">
+                <div class="ngbps3">
+                  <div id="ngbp8h" class="ngbph">
+                    <div id="ngbp8h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp8h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp8h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp8h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp8h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp8n">Titan</div>
-                <div id="ngbp8p">₦140</div>
                 <div id="ngbpp14"></div>
+                <div id="ngbp8p" class="ngbppv">₦140</div>
               </div>
             </div>
             <div id="ngba2" class="ngbrp">
-              <div id="ngbphr">
+              <div class="ngbphr">
                 <div id="ngba2n">JAXA</div>
                 <div id="ngba2i"><img class="ngbapng ngbapngr" src="ngba.png"></div>
-                <div id="ngba2p">₦200</div>
                 <div id="ngbpp15"></div>
+                <div id="ngba2p" class="ngbppv">₦200</div>
               </div>
             </div>
             <div id="ngbp9" class="ngbrp">
-              <div id="ngbphr">
-                <div class="ngbps4"></div>
-                <div id="ngbp9h" class="ngbph">
-                  <div id="ngbp9h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp9h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp9h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp9h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp9h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphr">
+                <div class="ngbps4">
+                  <div id="ngbp9h" class="ngbph">
+                    <div id="ngbp9h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp9h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp9h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp9h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp9h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp9n">Halley</div>
-                <div id="ngbp9p">₦160</div>
                 <div id="ngbpp16"></div>
+                <div id="ngbp9p" class="ngbppv">₦160</div>
               </div>
             </div>
             <div id="ngbwc2" class="ngbrp">
-              <div id="ngbphr">
-                <div id="ngbwc2n">Wormhole</div>
+              <div class="ngbphr">
+                <div id="ngbwc2n">Space Loot</div>
                 <div id="ngbwc2i"><img src="ngbwc.png"></div>
                 <div id="ngbpp17"></div>
               </div>
             </div>
             <div id="ngbp10" class="ngbrp">
-              <div id="ngbphr">
-                <div class="ngbps4"></div>
-                <div id="ngbp10h" class="ngbph">
-                  <div id="ngbp10h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp10h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp10h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp10h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp10h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphr">
+                <div class="ngbps4">
+                  <div id="ngbp10h" class="ngbph">
+                    <div id="ngbp10h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp10h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp10h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp10h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp10h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp10n">Swift</div>
-                <div id="ngbp10p">₦160</div>
                 <div id="ngbpp18"></div>
+                <div id="ngbp10p" class="ngbppv">₦160</div>
               </div>
             </div>
             <div id="ngbp11" class="ngbrp">
-              <div id="ngbphr">
-                <div class="ngbps4"></div>
-                <div id="ngbp11h" class="ngbph">
-                  <div id="ngbp11h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp11h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp11h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp11h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp11h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphr">
+                <div class="ngbps4">
+                  <div id="ngbp11h" class="ngbph">
+                    <div id="ngbp11h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp11h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp11h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp11h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp11h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp11n">Encke</div>
-                <div id="ngbp11p">₦180</div>
                 <div id="ngbpp19"></div>
+                <div id="ngbp11p" class="ngbppv">₦180</div>
               </div>
             </div>
             <div id="ngbwh">
-              <div id="ngbphc">
+              <div class="ngbphc">
                 <div id="ngbwhn">Neutron</div>
                 <div id="ngbwhi"><img src="ngbwh.png"></div>
                 <div id="ngbpp20"></div>
               </div>
             </div>
             <div id="ngbp12" class="ngbbp">
-              <div id="ngbphb">
-                <div class="ngbps5"></div>
-                <div id="ngbp12h" class="ngbph">
-                  <div id="ngbp12h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp12h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp12h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp12h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp12h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphb">
+                <div class="ngbps5">
+                  <div id="ngbp12h" class="ngbph">
+                    <div id="ngbp12h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp12h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp12h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp12h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp12h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp12n">Mercury</div>
-                <div id="ngbp12p">₦180</div>
                 <div id="ngbpp21"></div>
+                <div id="ngbp12p" class="ngbppv">₦180</div>
               </div>
             </div>
             <div id="ngbrc2" class="ngbbp">
-              <div id="ngbphb">
+              <div class="ngbphb">
                 <div id="ngbrc2n">Rift</div>
                 <div id="ngbrc2i"><img src="ngbrc.png"></div>
                 <div id="ngbrc2n"></div>
@@ -2456,75 +2519,79 @@
               </div>
             </div>
             <div id="ngbp13" class="ngbbp">
-              <div id="ngbphb">
-                <div class="ngbps5"></div>
-                <div id="ngbp13h" class="ngbph">
-                  <div id="ngbp13h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp13h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp13h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp13h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp13h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphb">
+                <div class="ngbps5">
+                  <div id="ngbp13h" class="ngbph">
+                    <div id="ngbp13h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp13h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp13h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp13h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp13h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp13n">Venus</div>
-                <div id="ngbp13p">₦200</div>
                 <div id="ngbpp23"></div>
+                <div id="ngbp13p" class="ngbppv">₦200</div>
               </div>
             </div>
             <div id="ngbp14" class="ngbbp">
-              <div id="ngbphb">
-                <div class="ngbps5"></div>
-                <div id="ngbp14h" class="ngbph">
-                  <div id="ngbp14h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp14h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp14h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp14h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp14h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphb">
+                <div class="ngbps5">
+                  <div id="ngbp14h" class="ngbph">
+                    <div id="ngbp14h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp14h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp14h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp14h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp14h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp14n">Earth</div>
-                <div id="ngbp14p">₦200</div>
                 <div id="ngbpp24"></div>
+                <div id="ngbp14p" class="ngbppv">₦200</div>
               </div>
             </div>
             <div id="ngba3" class="ngbbp">
-              <div id="ngbphb">
+              <div class="ngbphb">
                 <div id="ngba3n">ESA</div>
                 <div id="ngba3i"><img class="ngbapng" src="ngba.png"></div>
-                <div id="ngba3p">₦200</div>
+                <div id="ngba3p" class="ngbppv">₦200</div>
                 <div id="ngbpp25"></div>
               </div>
             </div>
             <div id="ngbp15" class="ngbbp">
-              <div id="ngbphb">
-                <div class="ngbps6"></div>
-                <div id="ngbp15h" class="ngbph">
-                  <div id="ngbp15h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp15h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp15h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp15h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp15h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphb">
+                <div class="ngbps6">
+                  <div id="ngbp15h" class="ngbph">
+                    <div id="ngbp15h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp15h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp15h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp15h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp15h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp15n">Mars</div>
-                <div id="ngbp15p">₦220</div>
                 <div id="ngbpp26"></div>
+                <div id="ngbp15p" class="ngbppv">₦220</div>
               </div>
             </div>
             <div id="ngbp16" class="ngbbp">
-              <div id="ngbphb">
-                <div class="ngbps6"></div>
-                <div id="ngbp16h" class="ngbph">
-                  <div id="ngbp16h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp16h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp16h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp16h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp16h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphb">
+                <div class="ngbps6">
+                  <div id="ngbp16h" class="ngbph">
+                    <div id="ngbp16h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp16h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp16h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp16h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp16h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp16n">Jupiter</div>
-                <div id="ngbp16p">₦220</div>
                 <div id="ngbpp27"></div>
+                <div id="ngbp16p" class="ngbppv">₦220</div>
               </div>
             </div>
             <div id="ngbhc" class="ngbbp">
-              <div id="ngbphb">
+              <div class="ngbphb">
                 <div id="ngbhcn">Hydro Core</div>
                 <div id="ngbhci"><img src="ngbhc.png"></div>
                 <div id="ngbhcv">₦150</div>
@@ -2532,133 +2599,139 @@
               </div>
             </div>
             <div id="ngbp17" class="ngbbp">
-              <div id="ngbphb">
-                <div class="ngbps6"></div>
-                <div id="ngbp17h" class="ngbph">
-                  <div id="ngbp17h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp17h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp17h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp17h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp17h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphb">
+                <div class="ngbps6">
+                  <div id="ngbp17h" class="ngbph">
+                    <div id="ngbp17h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp17h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp17h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp17h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp17h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp17n">Saturn</div>
-                <div id="ngbp17p">₦240</div>
                 <div id="ngbpp29"></div>
+                <div id="ngbp17p" class="ngbppv">₦240</div>
               </div>
             </div>
             <div id="ngbgj">
-              <div id="ngbphc">
+              <div class="ngbphc">
                 <div id="ngbgjn">Caught in BlackHole</div>
                 <div id="ngbgji"><img src="mgmgj.png"></div>
                 <div id="ngbpp30"></div>
               </div>
             </div>
             <div id="ngbp18" class="ngblp">
-              <div id="ngbphl">
-                <div class="ngbps7"></div>
-                <div id="ngbp18h" class="ngbph">
-                  <div id="ngbp18h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp18h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp18h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp18h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp18h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphl">
+                <div class="ngbps7">
+                  <div id="ngbp18h" class="ngbph">
+                    <div id="ngbp18h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp18h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp18h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp18h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp18h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp18n">Uranus</div>
-                <div id="ngbp18p">₦240</div>
                 <div id="ngbpp31"></div>
+                <div id="ngbp18p" class="ngbppv">₦240</div>
               </div>
             </div>
             <div id="ngbp19" class="ngblp">
-              <div id="ngbphl">
-                <div class="ngbps7"></div>
-                <div id="ngbp19h" class="ngbph">
-                  <div id="ngbp19h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp19h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp19h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp19h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp19h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphl">
+                <div class="ngbps7">
+                  <div id="ngbp19h" class="ngbph">
+                    <div id="ngbp19h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp19h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp19h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp19h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp19h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp19n">Neptune</div>
-                <div id="ngbp19p">₦260</div>
                 <div id="ngbpp32"></div>
+                <div id="ngbp19p" class="ngbppv">₦260</div>
               </div>
             </div>
             <div id="ngbwc3" class="ngblp">
-              <div id="ngbphl">
-                <div id="ngbwc3n">Wormhole</div>
+              <div class="ngbphl">
+                <div id="ngbwc3n">Space Loot</div>
                 <div id="ngbwc3i"><img src="ngbwc.png"></div>
                 <div id="ngbpp33"></div>
               </div>
             </div>
             <div id="ngbp20" class="ngblp">
-              <div id="ngbphl">
-                <div class="ngbps7"></div>
-                <div id="ngbp20h" class="ngbph">
-                  <div id="ngbp20h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp20h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp20h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp20h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp20h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphl">
+                <div class="ngbps7">
+                  <div id="ngbp20h" class="ngbph">
+                    <div id="ngbp20h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp20h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp20h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp20h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp20h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp20n">PlanetX</div>
-                <div id="ngbp20p">₦260</div>
                 <div id="ngbpp34"></div>
+                <div id="ngbp20p" class="ngbppv">₦260</div>
               </div>
             </div>
             <div id="ngba4" class="ngblp">
-              <div id="ngbphl">
+              <div class="ngbphl">
                 <div id="ngba4n">ISRO</div>
                 <div id="ngba4i"><img class="ngbapng ngbapngl" src="ngba.png"></div>
-                <div id="ngba4v">₦200</div>
                 <div id="ngbpp35"></div>
+                <div id="ngba4p" class="ngbppv">₦200</div>
               </div>
             </div>
             <div id="ngbrc3" class="ngblp">
-              <div id="ngbphl">
+              <div class="ngbphl">
                 <div id="ngbrc3n">Rift</div>
                 <div id="ngbrc3i"><img src="ngbrc.png"></div>
                 <div id="ngbpp36"></div>
               </div>
             </div>
             <div id="ngbp21" class="ngblp">
-              <div id="ngbphl">
-                <div class="ngbps8"></div>
-                <div id="ngbp21h" class="ngbph">
-                  <div id="ngbp21h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp21h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp21h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp21h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp21h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphl">
+                <div class="ngbps8">
+                  <div id="ngbp21h" class="ngbph">
+                    <div id="ngbp21h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp21h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp21h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp21h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp21h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp21n">Sun</div>
-                <div id="ngbp21p">₦280</div>
                 <div id="ngbpp37"></div>
+                <div id="ngbp21p" class="ngbppv">₦280</div>
               </div>
             </div>
             <div id="ngbpt" class="ngblp">
-              <div id="ngbphl">
+              <div class="ngbphl">
                 <div id="ngbptn">Prisma Tax</div>
                 <div id="ngbpti"><img src="ngbpt.png"></div>
-                <div id="ngbptv">₦75</div>
                 <div id="ngbpp38"></div>
+                <div id="ngbptv" class="ngbppv">₦75</div>
               </div>
             </div>
             <div id="ngbp22" class="ngblp">
-              <div id="ngbphl">
-                <div class="ngbps8"></div>
-                <div id="ngbp22h" class="ngbph">
-                  <div id="ngbp22h1"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp22h2"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp22h3"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp22h4"><img class="ngbspss" src="ngbsp.png"></div>
-                  <div id="ngbp22h5"><img class="ngbspss" src="ngbss.png"></div>
+              <div class="ngbphl">
+                <div class="ngbps8">
+                  <div id="ngbp22h" class="ngbph">
+                    <div id="ngbp22h1"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp22h2"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp22h3"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp22h4"><img class="ngbspss" src="ngbsp.png"></div>
+                    <div id="ngbp22h5"><img class="ngbspss" src="ngbss.png"></div>
+                  </div>
                 </div>
                 <div id="ngbp22n">Neutrox</div>
-                <div id="ngbp22p">₦300</div>
                 <div id="ngbpp39"></div>
+                <div id="ngbp22p" class="ngbppv">₦300</div>
               </div>
             </div>
-            <div id="ngbwcp">Wormhole</div>
+            <div id="ngbwcp">Space Loot</div>
             <div id="ngbrcp">Rift</div>
             <div id="ngbd1">
               <div class="cube">
@@ -2748,7 +2821,6 @@
           </div>
         </div>
       </div>
-
 
       <!-- Number Guesser -->
       <div class="card" role="region" aria-labelledby="numberguesserTitle">
