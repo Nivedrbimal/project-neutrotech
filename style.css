@@ -449,7 +449,7 @@ body {
 .panel {
   overflow: hidden;
   margin-bottom: 20px;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 

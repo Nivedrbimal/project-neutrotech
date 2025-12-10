@@ -1027,3 +1027,4 @@ function getId() {
         accent1Picker, accent2Picker, background1Picker, background2Picker, card1Picker, card2Picker, root, resetBtn, themeButtons, ownThemeNameInput, ownThemeOut, ownThemeSave, saveThemeNameBtn, themes
     }
 }
+const def = getId();
