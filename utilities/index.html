@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0" />
+  <title>Neutroxity Utilities</title>
+  <link rel="icon" href="https://neutroxity.tech/faviconNRB.png" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="apple-touch-icon" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="stylesheet" href="https://neutroxity.tech/style.css" />
+  <meta name="author" content="Nived" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="main-header" id="mainHeader" role="banner">
+    <div class="logo-area" aria-hidden="false">
+      <img class="logo" src="https://neutroxity.tech/faviconNRB.png" alt="Neutroxity Logo">
+      <h1>Neutroxity</h1>
+    </div>
+
+    <nav id="topNav" class="top-nav" role="navigation" aria-label="Top links">
+      <button data-target="panel-home" class="top-link">Home</button>
+      <button data-target="panel-utilities" class="top-link">Tools</button>
+      <button data-target="panel-info" class="top-link">Info</button>
+    </nav>
+    <button id="toggleSidebarResponsive" class="sidebar-toggle-responsive"
+      aria-label="Toggle responsive sidebar">☰</button>
+  </header>
+  <!-- Sidebar -->
+  <aside class="sidebar collapsed" id="sidebar" role="navigation" aria-label="Main menu">
+    <nav class="menu" id="mainMenu">
+      <button data-target="panel-home" class="menu-btn" aria-controls="panel-home">
+        <i class="icon"><img src="https://neutroxity.tech/iconHome.png" class="icon-img"></i><span>Home</span>
+      </button>
+      <button data-target="panel-math" class="menu-btn" aria-controls="panel-math">
+        <i class="icon"><img src="https://neutroxity.tech/iconMath.png" class="icon-img"></i><span>Math</span>
+      </button>
+      <button data-target="panel-physics" class="menu-btn" aria-controls="panel-physics">
+        <i class="icon"><img src="https://neutroxity.tech/iconPhysics.png" class="icon-img"></i><span>Physics</span>
+      </button>
+      <button data-target="panel-chemistry" class="menu-btn" aria-controls="panel-chemistry">
+        <i class="icon"><img src="https://neutroxity.tech/iconChemistry.png" class="icon-img"></i><span>Chemistry</span>
+      </button>
+      <button data-target="panel-games" class="menu-btn" aria-controls="panel-games">
+        <i class="icon"><img src="https://neutroxity.tech/iconGames.png" class="icon-img"></i><span>Games</span>
+      </button>
+      <button data-target="panel-utilities" class="menu-btn active" aria-controls="panel-utilities">
+        <i class="icon"><img src="https://neutroxity.tech/iconUtilities.png" class="icon-img"></i><span>Utilities</span>
+      </button>
+      <button data-target="panel-info" class="menu-btn" aria-controls="panel-info">
+        <i class="icon"><img src="https://neutroxity.tech/iconInfo.png" class="icon-img"></i><span>Info</span>
+      </button>
+    </nav>
+    <button id="toggleSidebar" class="toggle-btn" aria-label="Toggle sidebar">☰</button>
+  </aside>
+  <!-- App -->
+  <main id="app" role="main" tabindex="-1">
+    <!-- UTILITIES -->
+    <section id="panel-utilities" class="panel" aria-labelledby="utilTitle">
+      <h2 id="utilTitle" class="title">Utilities</h2>
+
+      <!-- Unit Converter -->
+      <div class="card" role="region" aria-labelledby="unitConvertTitle">
+        <h3 id="unitConvertTitle">Unit Converter</h3>
+        <p class="muted">Converts units to another unit of its kind</p>
+        <div class="grid">
+          <label><span class="muted">Category</span>
+            <select id="unitCategory" onchange="updateUnits()">
+              <option value="length">Length</option>
+              <option value="mass">Mass</option>
+              <option value="area">Area</option>
+              <option value="volume">Volume</option>
+              <option value="angle">Angle</option>
+              <option value="temperature">Temperature</option>
+              <option value="energy">Energy</option>
+              <option value="speed">Speed</option>
+              <option value="time">Time</option>
+              <option value="power">Power</option>
+              <option value="pressure">Pressure</option>
+              <option value="frequency">Frequency</option>
+              <option value="fuelEconomy">Fuel Economy</option>
+              <option value="memory">Memory</option>
+              <option value="dataTransferUnits">Data Transfer Rate</option>
+            </select>
+          </label>
+          <label><span class="muted">Value</span>
+            <input id="unitVal" type="text" step="any" placeholder="Enter unit value" aria-label="unit input" />
+          </label>
+          <label><span class="muted">Convert From:</span>
+            <select id="fromUnit"></select>
+          </label>
+          <label><span class="muted">Convert To:</span>
+            <select id="toUnit"></select>
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn" onclick="unitCompute()">Compute</button>
+          <button class="btn" onclick="unitClear()">Clear</button>
+        </div>
+        <div id="unitOut" class="output mono" role="status" aria-live="polite"></div>
+      </div>
+
+      <!-- Password Generator -->
+      <div class="card" role="region" aria-labelledby="passwordGeneratorTitle">
+        <h3 id="passwordGeneratorTitle">Password Generator</h3>
+        <p class="muted">Decide which characters to include and the length and a strong password will be given.</p>
+        <div class="dropdown" id="charactersDropdown">
+          <span class="muted">Allowed Character Types:</span>
+          <div class="dropdown-button" id="pwdCharacterTypesToggle" role="button" tabindex="0" aria-expanded="false">
+            Select Character Types
+          </div>
+          <div class="dropdown-content" id="pwdCharacterTypesContent" aria-hidden="true">
+            <label><input type="checkbox" id="pwdUpper" value="upper" class="characters" checked> Capital
+              Letters</label><br>
+            <label><input type="checkbox" id="pwdLower" value="lower" class="characters" checked> Lowercase
+              Letters</label><br>
+            <label><input type="checkbox" id="pwdSymbols" value="symbols" class="characters" checked>
+              Symbols</label><br>
+            <label><input type="checkbox" id="pwdNumbers" value="numbers" class="characters" checked> Numbers</label>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Enter number of characters required</span>
+              <input id="pwdLength" type="text" step="any" placeholder="Length" aria-label="pw length input" />
+            </label>
+          </div>
+          <div class="row">
+            <button id="pwdGenerate" class="btn" onclick="passwordGenerate()">Generate</button>
+            <button id="pwdClear" class="btn" onclick="passwordClear()">Clear</button>
+            <button id="pwdCopy" class="btn" onclick="copyPassword()">Copy</button>
+          </div>
+          <div id="pwdOut" class="output mono" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+
+      <!-- Week Day Calculator
+      <div class="card" role="region" aria-labelledby="dayCalculatorTitle">
+        <h3 id="dayCalculatorTitle">Week Day Calculator</h3>
+        <p class="muted">Calculate the week day for a given date.</p>
+        <div class="grid">
+          <label><span class="muted">Select Date:</span>
+            <input id="date" type="date" aria-label="start date" />
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn" onclick="calculateWeekday()">Calculate</button>
+          <button class="btn" onclick="clearWeekday()">Clear</button>
+        </div>
+        <div id="dayOut" class="output mono" role="status" aria-live="polite"></div>
+      </div> -->
+
+    </section>
+  </main>
+  <!-- Site scripts -->
+  <script src="https://neutroxity.tech/onstart.js"></script>
+  <script src="https://neutroxity.tech/utilities/ulped.js"></script>
+  <script src="https://neutroxity.tech/utilities/utilitiespanel.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0" />
+  <title>Neutroxity Info</title>
+  <link rel="icon" href="https://neutroxity.tech/faviconNRB.png" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="apple-touch-icon" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="stylesheet" href="https://neutroxity.tech/style.css" />
+  <meta name="author" content="Nived" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="main-header" id="mainHeader" role="banner">
+    <div class="logo-area" aria-hidden="false">
+      <img class="logo" src="https://neutroxity.tech/faviconNRB.png" alt="Neutroxity Logo">
+      <h1>Neutroxity</h1>
+    </div>
+
+    <nav id="topNav" class="top-nav" role="navigation" aria-label="Top links">
+      <button data-target="panel-home" class="top-link">Home</button>
+      <button data-target="panel-utilities" class="top-link">Tools</button>
+      <button data-target="panel-info" class="top-link">Info</button>
+    </nav>
+    <button id="toggleSidebarResponsive" class="sidebar-toggle-responsive"
+      aria-label="Toggle responsive sidebar">☰</button>
+  </header>
+  <!-- Sidebar -->
+  <aside class="sidebar collapsed " id="sidebar" role="navigation" aria-label="Main menu">
+    <nav class="menu" id="mainMenu">
+      <button data-target="panel-home" class="menu-btn" aria-controls="panel-home">
+        <i class="icon"><img src="https://neutroxity.tech/iconHome.png" class="icon-img"></i><span>Home</span>
+      </button>
+      <button data-target="panel-math" class="menu-btn" aria-controls="panel-math">
+        <i class="icon"><img src="https://neutroxity.tech/iconMath.png" class="icon-img"></i><span>Math</span>
+      </button>
+      <button data-target="panel-physics" class="menu-btn" aria-controls="panel-physics">
+        <i class="icon"><img src="https://neutroxity.tech/iconPhysics.png" class="icon-img"></i><span>Physics</span>
+      </button>
+      <button data-target="panel-chemistry" class="menu-btn" aria-controls="panel-chemistry">
+        <i class="icon"><img src="https://neutroxity.tech/iconChemistry.png" class="icon-img"></i><span>Chemistry</span>
+      </button>
+      <button data-target="panel-games" class="menu-btn" aria-controls="panel-games">
+        <i class="icon"><img src="https://neutroxity.tech/iconGames.png" class="icon-img"></i><span>Games</span>
+      </button>
+      <button data-target="panel-utilities" class="menu-btn" aria-controls="panel-utilities">
+        <i class="icon"><img src="https://neutroxity.tech/iconUtilities.png" class="icon-img"></i><span>Utilities</span>
+      </button>
+      <button data-target="panel-info" class="menu-btn active" aria-controls="panel-info">
+        <i class="icon"><img src="https://neutroxity.tech/iconInfo.png" class="icon-img"></i><span>Info</span>
+      </button>
+    </nav>
+    <button id="toggleSidebar" class="toggle-btn" aria-label="Toggle sidebar">☰</button>
+  </aside>
+  <!-- App -->
+  <main id="app" role="main" tabindex="-1">
+    <!-- INFO -->
+    <section id="panel-info" class="panel" aria-labelledby="infoTitle">
+      <h2 id="infoTitle" class="title">Info</h2>
+
+      <!-- About -->
+      <div class="card">
+        <h3>Neutroxity — Math & Science tools built for learning.</h3>
+        <p class="muted">Hi! I'm NRB, a student who enjoys creating and experimenting with code, design, and
+          technology. This website is my personal project space — a place where I build interactive tools, games, and
+          learning experiments as I continue improving my programming skills. My goal is to make coding fun, creative,
+          and accessible for anyone who visits. Whether it's a math quiz, a simple game, or a web design experiment,
+          each project here is built with curiosity and the drive to learn something new.</p>
+      </div>
+
+      <!-- User Login/Logout -->
+      <div class="card">
+        <div id="signUpLoginScreen" class="grid sll-visible">
+          <div>
+            <h3>Sign Up</h3>
+            <div class="row">
+              <label><span class="muted">Enter a username</span>
+                <input type="text" id="signUpUsername" placeholder="Username">
+              </label>
+              <label><span class="muted">Enter a password</span>
+                <input type="password" id="signUpPassword" placeholder="Password">
+              </label>
+              <label><span class="muted"></span><br>
+                <button id="signUp" class="btn" onclick="signUp()">Sign Up</button>
+              </label>
+            </div>
+            <div id="signUpOut" class="output mono"></div>
+          </div>
+          <div>
+            <h3>Login</h3>
+            <div class="row">
+              <label><span class="muted">Enter your username</span>
+                <input type="text" id="loginUsername" placeholder="Username">
+              </label>
+              <label><span class="muted">Enter your password</span>
+                <input type="password" id="loginPassword" placeholder="Password">
+              </label>
+              <label><span class="muted"></span><br>
+                <button id="login" class="btn" onclick="signIn()">Login</button>
+              </label>
+            </div>
+            <div id="loginOut" class="output mono"></div>
+          </div>
+        </div>
+        <div id="profileScreen" class="sll-hidden">
+          <h3>Profile</h3>
+          <button id="logout" class="btn" onclick="signOut()">Logout</button>
+          <div class="output mono" id="profileOut"></div>
+        </div>
+      </div>
+
+      <!-- Customization -->
+      <div class="card" id="customize">
+        <h3>Choose your theme</h3>
+        <p class="muted">Choose your theme or create your own theme</p>
+        <div id="color-pickers" class="grid">
+          <label><span class="muted">Main color first shade:</span><br>
+            <input class="color-picker" type="color" step="any" id="accent1Picker" value="#3c78d8">
+          </label>
+          <label><span class="muted">Main color second shade:</span><br>
+            <input class="color-picker" type="color" step="any" id="accent2Picker" value="#9900ff">
+          </label>
+          <label><span class="muted">Background color first shade:</span><br>
+            <input class="color-picker" type="color" step="any" id="background1Picker" value="#172D50">
+          </label>
+          <label><span class="muted">Background color second shade:</span><br>
+            <input class="color-picker" type="color" step="any" id="background2Picker" value="#480A71">
+          </label>
+          <label><span class="muted">Card color first shade:</span><br>
+            <input class="color-picker" type="color" step="any" id="card1Picker" value="#0c3b83">
+          </label>
+          <label><span class="muted">Card color second shade:</span><br>
+            <input class="color-picker" type="color" step="any" id="card2Picker" value="#241b77">
+          </label>
+        </div>
+        <div class="row">
+          <button id="resetColors" class="btn">Reset</button>
+        </div>
+        <p class="muted">Don't know which colors to choose? Try the ready made themes:</p>
+        <div class="row theme-previews">
+          <button class="theme-btn" data-theme="neutroxity">
+            <div class="preview-box neutroxity"></div>
+            <span>Neutroxity</span>
+          </button>
+          <button class="theme-btn" data-theme="aurora">
+            <div class="preview-box aurora"></div>
+            <span>Aurora</span>
+          </button>
+          <button class="theme-btn" data-theme="neonDark">
+            <div class="preview-box neonDark"></div>
+            <span>Neon Dark</span>
+          </button>
+          <button class="theme-btn" data-theme="cosmicDawn">
+            <div class="preview-box cosmicDawn"></div>
+            <span>Cosmic Dawn</span>
+          </button>
+          <button class="theme-btn" data-theme="galacticVoid">
+            <div class="preview-box galacticVoid"></div>
+            <span>Galactic Void</span>
+          </button>
+        </div>
+        <p class="muted">Wan't to save your own theme to the public or for yourself? Click the submit button.</p>
+        <div class="row">
+          <button class="btn" onclick="saveThemePublic()">Save for public</button>
+          <button class="btn" onclick="saveThemeSelf()">Save only for me</button>
+        </div>
+        <div class="hidden" id="ownThemeSave">
+          <div class="row">
+            <label><span class="muted">Enter a name for your theme:</span>
+              <input type="text" step="any" id="ownThemeName" placeholder="Name for your theme">
+            </label>
+            <label><span></span><br>
+              <button class="btn" id="saveThemeName" onclick="saveThemeName()">Save Theme</button>
+            </label>
+          </div>
+          <br>
+          <div class="output mono" id="ownThemeOut"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-check-compat.js"></script>
+  <!-- Site scripts -->
+  <script src="https://neutroxity.tech/onstart.js"></script>
+  <script src="https://neutroxity.tech/fbdb.js"></script>
+  <script src="https://neutroxity.tech/info/inped.js"></script>
+  <script src="https://neutroxity.tech/info/infopanel.js"></script>
+
+</body>
+
+</html>

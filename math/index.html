@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1.0" />
+  <title>Neutroxity - Math</title>
+  <link rel="icon" href="https://neutroxity.tech/faviconNRB.png" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="apple-touch-icon" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://neutroxity.tech/faviconNRB.png">
+  <link rel="stylesheet" href="https://neutroxity.tech/style.css" />
+  <meta name="author" content="Nived" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="main-header" id="mainHeader" role="banner">
+    <div class="logo-area" aria-hidden="false">
+      <img class="logo" src="https://neutroxity.tech/faviconNRB.png" alt="Neutroxity Logo">
+      <h1>Neutroxity</h1>
+    </div>
+
+    <nav id="topNav" class="top-nav" role="navigation" aria-label="Top links">
+      <button data-target="panel-home" class="top-link">Home</button>
+      <button data-target="panel-utilities" class="top-link">Tools</button>
+      <button data-target="panel-info" class="top-link">Info</button>
+    </nav>
+    <button id="toggleSidebarResponsive" class="sidebar-toggle-responsive toggleSidebarResponsive"
+      aria-label="Toggle responsive sidebar">☰</button>
+  </header>
+  <!-- Sidebar -->
+  <aside class="sidebar collapsed" id="sidebar" role="navigation" aria-label="Main menu">
+    <nav class="menu" id="mainMenu">
+      <button data-target="panel-home" class="menu-btn" aria-controls="panel-home">
+        <i class="icon"><img src="https://neutroxity.tech/iconHome.png" class="icon-img"></i><span>Home</span>
+      </button>
+      <button data-target="panel-math" class="menu-btn active" aria-controls="panel-math">
+        <i class="icon"><img src="https://neutroxity.tech/iconMath.png" class="icon-img"></i><span>Math</span>
+      </button>
+      <button data-target="panel-physics" class="menu-btn" aria-controls="panel-physics">
+        <i class="icon"><img src="https://neutroxity.tech/iconPhysics.png" class="icon-img"></i><span>Physics</span>
+      </button>
+      <button data-target="panel-chemistry" class="menu-btn" aria-controls="panel-chemistry">
+        <i class="icon"><img src="https://neutroxity.tech/iconChemistry.png" class="icon-img"></i><span>Chemistry</span>
+      </button>
+      <button data-target="panel-games" class="menu-btn" aria-controls="panel-games">
+        <i class="icon"><img src="https://neutroxity.tech/iconGames.png" class="icon-img"></i><span>Games</span>
+      </button>
+      <button data-target="panel-utilities" class="menu-btn" aria-controls="panel-utilities">
+        <i class="icon"><img src="https://neutroxity.tech/iconUtilities.png" class="icon-img"></i><span>Utilities</span>
+      </button>
+      <button data-target="panel-info" class="menu-btn" aria-controls="panel-info">
+        <i class="icon"><img src="https://neutroxity.tech/iconInfo.png" class="icon-img"></i><span>Info</span>
+      </button>
+    </nav>
+    <button id="toggleSidebar" class="toggle-btn toggleSidebar" aria-label="Toggle sidebar">☰</button>
+  </aside>
+  <!-- App -->
+  <main id="app" role="main" tabindex="-1">
+    <!-- MATH -->
+    <section id="panel-math" class="panel" aria-labelledby="mathTitle">
+      <h2 id="mathTitle" class="title">Math Calculators</h2>
+
+      <!-- General Calculator -->
+      <div class="card" role="region" aria-labelledby="genCalcTitle">
+        <h3 id="genCalcTitle">General Calculator</h3>
+        <p class="muted">Supports basic operations, exponents, trigonometry, pi, </p>
+        <div class="grid">
+          <label><span class="muted">Equation</span>
+            <input id="genCalcVal" type="text" step="any" placeholder="Enter equation" aria-label="equation input" />
+          </label>
+        </div>
+        <div class="row">
+          <label><span class="muted">Select to which digit to round to:</span>
+            <select id="genCalcRound">
+              <option value="select" disabled selected>Select</option>
+              <option value="1">Whole Number</option>
+              <option value="10">Tenth</option>
+              <option value="100">Hundredth</option>
+              <option value="1000">Thousandth</option>
+              <option value="10000">Ten Thousandth</option>
+              <option value="0">Don't Round</option>
+            </select>
+          </label>
+          <label><span class="muted">If doing trigonomentric equations, select mode of angle:</span>
+            <select id="genCalcAngleMode">
+              <option value="select" disabled selected>Select</option>
+              <option value="deg">Degree</option>
+              <option value="rad">Radian</option>
+            </select>
+          </label>
+        </div>
+        <div class="row">
+          <button class="btn primary" onclick="genCalcCompute()">Compute</button>
+          <button class="btn" onclick="genCalcClear()">Clear</button>
+        </div>
+        <div id="genCalcOut" class="output mono" role="status" aria-live="polite"></div>
+      </div>
+
+      <!-- Trig Evaluator -->
+      <div class="card" role="region" aria-labelledby="trigTitle">
+        <h3 id="trigTitle">Trigonometric Evaluator</h3>
+        <p class="muted">
+          Supports basic, inverse, hyperbolic functions and polar input.
+        </p>
+
+        <div class="grid">
+          <label><span class="muted">Mode</span>
+            <select id="triMode" aria-label="trig mode" onchange="updatePlaceholder()">
+              <option value="deg">Degrees</option>
+              <option value="rad">Radians</option>
+            </select>
+          </label>
+          <label><span class="muted">Operation</span>
+            <select id="triOp" aria-label="trig operation" onchange="updatePlaceholder()">
+              <option value="sin">sin</option>
+              <option value="cos">cos</option>
+              <option value="tan">tan</option>
+              <option value="csc">csc</option>
+              <option value="sec">sec</option>
+              <option value="cot">cot</option>
+              <option value="asin">arcsin</option>
+              <option value="acos">arccos</option>
+              <option value="atan">arctan</option>
+              <option value="asec">arcsec</option>
+              <option value="acsc">arccsc</option>
+              <option value="acot">arccot</option>
+              <option value="sinh">sinh</option>
+              <option value="cosh">cosh</option>
+              <option value="tanh">tanh</option>
+              <option value="csch">csch</option>
+              <option value="sech">sech</option>
+              <option value="coth">coth</option>
+            </select>
+          </label>
+          <label><span class="muted">Input</span>
+            <input id="triVal" type="text" placeholder="Enter value" aria-label="trig input" />
+          </label>
+          <label><span class="muted">Polar Input</span>
+            <input id="triPolar" type="text" placeholder="r∠θ (e.g. 5∠30°)" aria-label="polar input" />
+          </label>
+        </div>
+
+        <div class="row">
+          <button class="btn primary" onclick="trigCompute()">Compute</button>
+          <button class="btn" onclick="trigClear()">Clear</button>
+        </div>
+
+        <div id="triOut" class="output mono" role="status" aria-live="polite"></div>
+      </div>
+
+      <!-- Quadratic Solver -->
+      <div class="card" role="region" aria-labelledby="quadeTitle">
+        <h3 id="quadeTitle">Quadratic Equation</h3>
+        <p class="muted">Finds the unknown values when given knowns.</p>
+        <div class="grid">
+          <label><span class="muted">Enter value of 'a', leave blank if unknown</span>
+            <input id="quadA" type="number" step="any" placeholder="Value of 'a'" aria-label="quad a input" />
+          </label>
+          <label><span class="muted">Enter value of 'b', leave blank if unknown</span>
+            <input id="quadB" type="number" step="any" placeholder="Value of 'b'" aria-label="quad b input" />
+          </label>
+          <label><span class="muted">Enter value of 'c', leave blank if unknown</span>
+            <input id="quadC" type="number" step="any" placeholder="Value of 'c'" aria-label="quad c input" />
+          </label>
+          <label><span class="muted">Enter value of 'x₁', leave blank if unknown</span>
+            <input id="quadX1" type="number" step="any" placeholder="value x₁" aria-label="quad x₁ input" />
+          </label>
+          <label><span class="muted">Enter value of 'x₂', leave blank if unknown</span>
+            <input id="quadX2" type="number" step="any" placeholder="value of x₂" aria-label="quad x₂ input" />
+          </label>
+          <label><span class="muted">Enter value of 'h', leave blank if unknown</span>
+            <input id="quadH" type="number" step="any" placeholder="x of vertex" aria-label="quad h input" />
+          </label>
+          <label><span class="muted">Enter value of 'k', leave blank if unknown</span>
+            <input id="quadK" type="number" step="any" placeholder="y of vertex" aria-label="quad k input" />
+          </label>
+          <label><span class="muted">Enter value of 'x', leave blank if unknown</span>
+            <input id="quadPx" type="number" step="any" placeholder="x of known point" aria-label="quad x input" />
+          </label>
+          <label><span class="muted">Enter value of 'y', leave blank if unknown</span>
+            <input id="quadPy" type="number" step="any" placeholder="y of known point" aria-label="quad y input" />
+          </label>
+
+        </div>
+        <div class="row">
+          <button class="btn primary" onclick="quadeSolve()">Solve</button>
+          <button class="btn" onclick="quadeClear()">Clear</button>
+        </div>
+        <div id="quadOut" class="output mono" role="status" aria-live="polite"></div>
+      </div>
+
+      <!-- 2D Shapes Calculator -->
+      <div class="card" role="region" aria-labelledby="shapesTitle">
+        <h3 id="shapesTitle">2D Shapes Calculator</h3>
+        <p class="muted">Calculate perimeter, area, or any value of various 2D shapes.</p>
+        <div class="row">
+          <label><span class="muted">Shape</span>
+            <select id="shape2D" aria-label="2D shape selection" onchange="showShape2DInputs()">
+              <option value="select" disabled selected>Select a shape</option>
+              <!-- <option value="semicircle">Semicircle</option> -->
+              <option value="circle">Circle</option>
+              <option value="triangle">Triangle</option>
+              <option value="square">Square</option>
+              <option value="rectangle">Rectangle</option>
+              <option value="parallelogram">Parallelogram</option>
+              <option value="trapezoid">Trapezoid</option>
+              <option value="kite">Kite</option>
+              <option value="ellipse">Ellipse</option>
+              <option value="regularPolygon">Regular Polygon</option>
+            </select>
+          </label>
+        </div>
+        <!-- <div class="grid" id="shapes2DSemicircleGrid">
+          <div class="row">
+            <p class="muted">Semicircle Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <label><span class="muted">Radius (r)</span>
+            <input id="shape2DSemicircleRadius" type="number" step="any" placeholder="Enter radius" aria-label="semicircle radius"/>
+          </label>
+          <label><span class="muted">Diameter (d)</span>
+            <input id="shape2DSemicircleDiameter" type="number" step="any" placeholder="Enter diameter" aria-label="semicircle diameter"/>
+          </label>
+          <label><span class="muted">Circumference (C)</span>
+            <input id="shape2DSemicircleCircumference" type="number" step="any" placeholder="Enter circumference" aria-label="semicircle circumference"/>
+          </label>
+          <label><span class="muted">Area (A)</span>
+            <input id="shape2DSemicircleArea" type="number" step="any" placeholder="Enter area" aria-label="semicircle area"/>
+          </label>
+          <label><span class="muted">Segment Height (h)</span>
+        </div> -->
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DCircleGrid">
+          <div class="row">
+            <p class="muted">Circle Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Radius (r)</span>
+              <input id="shape2DCircleRadius" type="number" step="any" placeholder="Enter radius"
+                aria-label="circle radius" />
+            </label>
+            <label><span class="muted">Diameter (d)</span>
+              <input id="shape2DCircleDiameter" type="number" step="any" placeholder="Enter diameter"
+                aria-label="circle diameter" />
+            </label>
+            <label><span class="muted">Circumference (C)</span>
+              <input id="shape2DCircleCircumference" type="number" step="any" placeholder="Enter circumference"
+                aria-label="circle circumference" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DCircleArea" type="number" step="any" placeholder="Enter area"
+                aria-label="circle area" />
+            </label>
+            <label><span class="muted">Sector Area (SA)</span>
+              <input id="shape2DCircleSectorArea" type="number" step="any" placeholder="Enter sector area"
+                aria-label="circle sector area" />
+            </label>
+            <label><span class="muted">Arc Length (L)</span>
+              <input id="shape2DCircleArcLength" type="number" step="any" placeholder="Enter arc length"
+                aria-label="circle arc length" />
+            </label>
+            <label><span class="muted">Central Angle (θ in degrees) if doing sector calculations</span>
+              <input id="shape2DCircleCentralAngle" type="number" step="any" placeholder="Enter central angle"
+                aria-label="circle central angle" />
+            </label>
+          </div>
+        </div>
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DTriangleGrid">
+          <div class="row">
+            <p class="muted">Triangle Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Triangle type based on angle</span>
+              <select id="shape2DTriangleAngleType" aria-label="triangle type angle">
+                <option value="">Select type</option>
+                <option value="acute">Acute</option>
+                <option value="right">Right</option>
+                <option value="obtuse">Obtuse</option>
+              </select>
+            </label>
+            <label><span class="muted">Triangle type based on sides</span>
+              <select id="shape2DTriangleSideType" aria-label="triangle type side">
+                <option value="">Select type</option>
+                <option value="equilateral">Equilateral</option>
+                <option value="isosceles">Isosceles</option>
+                <option value="scalene">Scalene</option>
+              </select>
+            </label>
+            <label><span class="muted">Base (b = side a)</span>
+              <input id="shape2DTriangleBase" type="number" step="any" placeholder="Enter base"
+                aria-label="triangle base" />
+            </label>
+            <label><span class="muted">Height 1 (height relative to side a)</span>
+              <input id="shape2DTriangleHeight1" type="number" step="any" placeholder="Enter height"
+                aria-label="triangle height" />
+            </label>
+            <label><span class="muted">Height 2 (height relative to side b)</span>
+              <input id="shape2DTriangleHeight2" type="number" step="any" placeholder="Enter height"
+                aria-label="triangle height" />
+            </label>
+            <label><span class="muted">Height 3 (height relative to side c)</span>
+              <input id="shape2DTriangleHeight3" type="number" step="any" placeholder="Enter height"
+                aria-label="triangle height" />
+            </label>
+            <label><span class="muted">Midsegment 1 (mid1)</span>
+              <input id="shape2DTriangleMidsegment1" type="number" step="any" placeholder="Enter midsegment 1"
+                aria-label="triangle midsegment 1" />
+            </label>
+            <label><span class="muted">Midsegment 2 (mid2)</span>
+              <input id="shape2DTriangleMidsegment2" type="number" step="any" placeholder="Enter midsegment 2"
+                aria-label="triangle midsegment 2" />
+            </label>
+            <label><span class="muted">Midsegment 3 (mid3)</span>
+              <input id="shape2DTriangleMidsegment3" type="number" step="any" placeholder="Enter midsegment 3"
+                aria-label="triangle midsegment 3" />
+            </label>
+            <label><span class="muted">Median 1 (m1)</span>
+              <input id="shape2DTriangleMedian1" type="number" step="any" placeholder="Enter median 1"
+                aria-label="triangle median 1" />
+            </label>
+            <label><span class="muted">Median 2 (m2)</span>
+              <input id="shape2DTriangleMedian2" type="number" step="any" placeholder="Enter median 2"
+                aria-label="triangle median 2" />
+            </label>
+            <label><span class="muted">Median 3 (m3)</span>
+              <input id="shape2DTriangleMedian3" type="number" step="any" placeholder="Enter median 3"
+                aria-label="triangle median 3" />
+            </label>
+            <label><span class="muted">side 1 (a)</span>
+              <input id="shape2DTriangleSide1" type="number" step="any" placeholder="Enter side 1"
+                aria-label="triangle side 1" />
+            </label>
+            <label><span class="muted">side 2 (b)</span>
+              <input id="shape2DTriangleSide2" type="number" step="any" placeholder="Enter side 2"
+                aria-label="triangle side 2" />
+            </label>
+            <label><span class="muted">side 3 (c)</span>
+              <input id="shape2DTriangleSide3" type="number" step="any" placeholder="Enter side 3"
+                aria-label="triangle side 3" />
+            </label>
+            <label><span class="muted">Angle A (opposite of side a)</span>
+              <input id="shape2DTriangleAngle1" type="number" step="any" placeholder="Enter angle A"
+                aria-label="triangle angle A" />
+            </label>
+            <label><span class="muted">Angle B (opposite of side b)</span>
+              <input id="shape2DTriangleAngle2" type="number" step="any" placeholder="Enter angle B"
+                aria-label="triangle angle B" />
+            </label>
+            <label><span class="muted">Angle C (opposite of side c)</span>
+              <input id="shape2DTriangleAngle3" type="number" step="any" placeholder="Enter angle C"
+                aria-label="triangle angle C" />
+            </label>
+            <label><span class="muted">Semiperimeter (S)</span>
+              <input id="shape2DTriangleSemiperimeter" type="number" step="any" placeholder="Enter semiperimeter"
+                aria-label="triangle semiperimeter" />
+            </label>
+            <label><span class="muted">Perimeter (P)</span>
+              <input id="shape2DTrianglePerimeter" type="number" step="any" placeholder="Enter perimeter"
+                aria-label="triangle perimeter" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DTriangleArea" type="number" step="any" placeholder="Enter area"
+                aria-label="triangle area" />
+            </label>
+            <label><span class="muted">Inradius (r)</span>
+              <input id="shape2DTriangleInradius" type="number" step="any" placeholder="Enter inradius"
+                aria-label="triangle inradius" />
+            </label>
+            <label><span class="muted">Circumradius (R)</span>
+              <input id="shape2DTriangleCircumradius" type="number" step="any" placeholder="Enter circumradius"
+                aria-label="triangle circumradius" />
+            </label>
+            <label><span class="muted">Exradius 1 (r)</span>
+              <input id="shape2DTriangleExradius1" type="number" step="any" placeholder="Enter exradius 1"
+                aria-label="triangle exradius 1" />
+            </label>
+            <label><span class="muted">Exradius 2 (r)</span>
+              <input id="shape2DTriangleExradius2" type="number" step="any" placeholder="Enter exradius 2"
+                aria-label="triangle exradius 2" />
+            </label>
+            <label><span class="muted">Exradius 3 (r)</span>
+              <input id="shape2DTriangleExradius3" type="number" step="any" placeholder="Enter exradius 3"
+                aria-label="triangle exradius 3" />
+            </label>
+          </div>
+        </div>
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DSquareGrid">
+          <div class="row">
+            <p class="muted">Square Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Side Length (s)</span>
+              <input id="shape2DSquareSide" type="number" step="any" placeholder="Enter side length"
+                aria-label="square side length" />
+            </label>
+            <label><span class="muted">Height (h)</span>
+              <input id="shape2DSquareHeight" type="number" step="any" placeholder="Enter height"
+                aria-label="square height" />
+            </label>
+            <label><span class="muted">Diagonal (d)</span>
+              <input id="shape2DSquareDiagonal" type="number" step="any" placeholder="Enter diagonal"
+                aria-label="square diagonal" />
+            </label>
+            <label><span class="muted">Midline (line connecting adjacent sides)</span>
+              <input id="shape2DSquareMidline" type="number" step="any" placeholder="Enter midline"
+                aria-label="square midline" />
+            </label>
+            <label><span class="muted">Perimeter (P)</span>
+              <input id="shape2DSquarePerimeter" type="number" step="any" placeholder="Enter perimeter"
+                aria-label="square perimeter" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DSquareArea" type="number" step="any" placeholder="Enter area"
+                aria-label="square area" />
+            </label>
+            <label><span class="muted">Inradius (r)</span>
+              <input id="shape2DSquareInradius" type="number" step="any" placeholder="Enter inradius"
+                aria-label="square inradius" />
+            </label>
+            <label><span class="muted">Circumradius (R)</span>
+              <input id="shape2DSquareCircumradius" type="number" step="any" placeholder="Enter circumradius"
+                aria-label="square circumradius" />
+            </label>
+          </div>
+        </div>
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DRectangleGrid">
+          <div class="row">
+            <p class="muted">Rectangle Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Length (l)</span>
+              <input id="shape2DRectangleLength" type="number" step="any" placeholder="Enter length"
+                aria-label="rectangle length" />
+            </label>
+            <label><span class="muted">Width (w)</span>
+              <input id="shape2DRectangleWidth" type="number" step="any" placeholder="Enter width"
+                aria-label="rectangle width" />
+            </label>
+            <label><span class="muted">Diagonal (d)</span>
+              <input id="shape2DRectangleDiagonal" type="number" step="any" placeholder="Enter diagonal"
+                aria-label="rectangle diagonal" />
+            </label>
+            <label><span class="muted">Perimeter (P)</span>
+              <input id="shape2DRectanglePerimeter" type="number" step="any" placeholder="Enter perimeter"
+                aria-label="rectangle perimeter" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DRectangleArea" type="number" step="any" placeholder="Enter area"
+                aria-label="rectangle area" />
+            </label>
+            <label><span class="muted">Inradius (r)</span>
+              <input id="shape2DRectangleInradius" type="number" step="any" placeholder="Enter inradius"
+                aria-label="rectangle inradius" />
+            </label>
+            <label><span class="muted">Circumradius (R)</span>
+              <input id="shape2DRectangleCircumradius" type="number" step="any" placeholder="Enter circumradius"
+                aria-label="rectangle circumradius" />
+            </label>
+          </div>
+        </div>
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DParallelograngrid">
+          <div class="row">
+            <p class="muted">Parallelogram Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Base (b)</span>
+              <input id="shape2DParallelogramBase" type="number" step="any" placeholder="Enter base"
+                aria-label="parallelogram base" />
+            </label>
+            <label><span class="muted">Height (h)</span>
+              <input id="shape2DParallelogramHeight" type="number" step="any" placeholder="Enter height"
+                aria-label="parallelogram height" />
+            </label>
+            <label><span class="muted">Side Length (s)</span>
+              <input id="shape2DParallelogramSide" type="number" step="any" placeholder="Enter side length"
+                aria-label="parallelogram side length" />
+            </label>
+            <label><span class="muted">Angle A (left of base)</span>
+              <input id="shape2DParallelogramAngleA" type="number" step="any" placeholder="Enter angle A"
+                aria-label="parallelogram angle A" />
+            </label>
+            <label><span class="muted">Angle B (right of base)</span>
+              <input id="shape2DParallelogramAngleB" type="number" step="any" placeholder="Enter angle B"
+                aria-label="parallelogram angle B" />
+            </label>
+            <label><span class="muted">Perimeter (P)</span>
+              <input id="shape2DParallelogramPerimeter" type="number" step="any" placeholder="Enter perimeter"
+                aria-label="parallelogram perimeter" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DParallelogramArea" type="number" step="any" placeholder="Enter area"
+                aria-label="parallelogram area" />
+            </label>
+          </div>
+        </div>
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DTrapezoidGrid">
+          <div class="row">
+            <p class="muted">Trapezoid Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Base 1 (b₁)</span>
+              <input id="shape2DTrapezoidBase1" type="number" step="any" placeholder="Enter base 1"
+                aria-label="trapezoid base 1" />
+            </label>
+            <label><span class="muted">Base 2 (b₂)</span>
+              <input id="shape2DTrapezoidBase2" type="number" step="any" placeholder="Enter base 2"
+                aria-label="trapezoid base 2" />
+            </label>
+            <label><span class="muted">Height (h)</span>
+              <input id="shape2DTrapezoidHeight" type="number" step="any" placeholder="Enter height"
+                aria-label="trapezoid height" />
+            </label>
+            <label><span class="muted">Side 1 (s₁)</span>
+              <input id="shape2DTrapezoidSide1" type="number" step="any" placeholder="Enter side 1"
+                aria-label="trapezoid side 1" />
+            </label>
+            <label><span class="muted">Side 2 (s₂)</span>
+              <input id="shape2DTrapezoidSide2" type="number" step="any" placeholder="Enter side 2"
+                aria-label="trapezoid side 2" />
+            </label>
+            <label><span class="muted">Perimeter (P)</span>
+              <input id="shape2DTrapezoidPerimeter" type="number" step="any" placeholder="Enter perimeter"
+                aria-label="trapezoid perimeter" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DTrapezoidArea" type="number" step="any" placeholder="Enter area"
+                aria-label="trapezoid area" />
+            </label>
+            <label><span class="muted">Midsegment (m)</span>
+              <input id="shape2DTrapezoidMidsegment" type="number" step="any" placeholder="Enter midsegment"
+                aria-label="trapezoid midsegment" />
+            </label>
+            <label><span class="muted">Angle A (left of base 1)</span>
+              <input id="shape2DTrapezoidAngleA" type="number" step="any" placeholder="Enter angle A"
+                aria-label="trapezoid angle A" />
+            </label>
+            <label><span class="muted">Angle B (right of base 1)</span>
+              <input id="shape2DTrapezoidAngleB" type="number" step="any" placeholder="Enter angle B"
+                aria-label="trapezoid angle B" />
+            </label>
+            <label><span class="muted">Angle C (left of base 2)</span>
+              <input id="shape2DTrapezoidAngleC" type="number" step="any" placeholder="Enter angle C"
+                aria-label="trapezoid angle C" />
+            </label>
+            <label><span class="muted">Angle D (right of base 2)</span>
+              <input id="shape2DTrapezoidAngleD" type="number" step="any" placeholder="Enter angle D"
+                aria-label="trapezoid angle D" />
+            </label>
+          </div>
+        </div>
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DKiteGrid">
+          <div class="row">
+            <p class="muted">Kite Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Diagonal 1 (d₁)</span>
+              <input id="shape2DKiteDiagonal1" type="number" step="any" placeholder="Enter diagonal 1"
+                aria-label="kite diagonal 1" />
+            </label>
+            <label><span class="muted">Diagonal 2 (d₂)</span>
+              <input id="shape2DKiteDiagonal2" type="number" step="any" placeholder="Enter diagonal 2"
+                aria-label="kite diagonal 2" />
+            </label>
+            <label><span class="muted">Short Side (s₁)</span>
+              <input id="shape2DKiteSide1" type="number" step="any" placeholder="Enter side 1"
+                aria-label="kite side 1" />
+            </label>
+            <label><span class="muted">Long Side (s₂)</span>
+              <input id="shape2DKiteSide2" type="number" step="any" placeholder="Enter side 2"
+                aria-label="kite side 2" />
+            </label>
+            <label><span class="muted">Perimeter (P)</span>
+              <input id="shape2DKitePerimeter" type="number" step="any" placeholder="Enter perimeter"
+                aria-label="kite perimeter" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DKiteArea" type="number" step="any" placeholder="Enter area" aria-label="kite area" />
+            </label>
+          </div>
+        </div>
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DEllipseGrid">
+          <div class="row">
+            <p class="muted">Ellipse Parameters. Enter known values or leave blank if unknown.</p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Semi-major Axis (a)</span>
+              <input id="shape2DEllipseSemiMajor" type="number" step="any" placeholder="Enter semi-major axis"
+                aria-label="ellipse semi-major axis" />
+            </label>
+            <label><span class="muted">Semi-minor Axis (b)</span>
+              <input id="shape2DEllipseSemiMinor" type="number" step="any" placeholder="Enter semi-minor axis"
+                aria-label="ellipse semi-minor axis" />
+            </label>
+            <label><span class="muted">Focal Distance (c)</span>
+              <input id="shape2DEllipseFocalDistance" type="number" step="any" placeholder="Enter focal distance"
+                aria-label="ellipse focal distance" />
+            </label>
+            <label><span class="muted">Perimeter (P)</span>
+              <input id="shape2DEllipsePerimeter" type="number" step="any" placeholder="Enter perimeter"
+                aria-label="ellipse perimeter" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DEllipseArea" type="number" step="any" placeholder="Enter area"
+                aria-label="ellipse area" />
+            </label>
+          </div>
+        </div>
+        <div class="shapes-2d shapes-2d-hidden" id="shapes2DRegularPolygonGrid">
+          <div class="row">
+            <p class="muted">Regular Polygon Parameters. Enter known values or leave blank if unknown.
+            </p>
+          </div>
+          <div class="grid">
+            <label><span class="muted">Number of Sides (n)</span>
+              <input id="shape2DRegularPolygonSides" type="number" step="any" placeholder="Enter number of sides"
+                aria-label="regular polygon number of sides" />
+            </label>
+            <label><span class="muted">Side Length (s)</span>
+              <input id="shape2DRegularPolygonSideLength" type="number" step="any" placeholder="Enter side length"
+                aria-label="regular polygon side length" />
+            </label>
+            <label><span class="muted">Apothem (ap)</span>
+              <input id="shape2DRegularPolygonApothemLength" type="number" step="any" placeholder="Enter apothem length"
+                aria-label="regular polygon apothem length" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DRegularPolygonArea" type="number" step="any" placeholder="Enter area"
+                aria-label="regular polygon area" />
+            </label>
+            <label><span class="muted">Area (A)</span>
+              <input id="shape2DRegularPolygonPerimeter" type="number" step="any" placeholder="Enter perimeter"
+                aria-label="regular polygon perimeter" />
+            </label>
+            <label><span class="muted">Circumradius (R)</span>
+              <input id="shape2DRegularPolygonCircumradius" type="number" step="any" placeholder="Enter circumradius"
+                aria-label="regular polygon circumradius" />
+            </label>
+            <label><span class="muted">Inradius (r)</span>
+              <input id="shape2DRegularPolygonInradius" type="number" step="any" placeholder="Enter inradius"
+                aria-label="regular polygon inradius" />
+            </label>
+          </div>
+        </div>
+        <div class="output mono" id="shapes2DOut" role="status" aria-live="polite"></div>
+        <div class="row">
+          <button class="btn primary" onclick="shapes2DCompute()">Compute</button>
+          <button class="btn" onclick="shapes2DClear()">Clear</button>
+        </div>
+      </div>
+
+      <!-- 3D Shapes Calculator -->
+      <div class="card" role="region" aria-labelledby="shapesTitle">
+        <h3 id="shapesTitle">3D Shapes Calculator Coming Soon!!</h3>
+        <p class="muted">Calculate surface area, volume, or any value of various 3D shapes.</p>
+        <div class="row">
+          <label><span class="muted">Shape</span>
+            <select id="shape3D" aria-label="3D shape selection" onchange="showShape3DInputs()">
+              <option value="select" disabled selected>Select a shape</option>
+              <option value="sphere">Sphere</option>
+              <option value="cone">Cone</option>
+              <option value="cylinder">Cylinder</option>
+              <option value="cube">Cube</option>
+              <option value="rectangularPrism">Cuboid</option>
+              <option value="triangularPrism">Triangular Prism</option>
+              <option value="squarePyramid">Square Pyramid</option>
+              <option value="triangularPyramid">Triangular Pyramid</option>
+              <option value="otherPrisms">Other Prisms</option>
+              <option value="otherPyramid">Other Pyramids</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Site scripts -->
+  <script src="https://neutroxity.tech/onstart.js"></script>
+  <script src="https://neutroxity.tech/math/mtped.js"></script>
+  <script src="https://neutroxity.tech/math/mathpanel.js"></script>
+</body>
+</html>

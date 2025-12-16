@@ -401,6 +401,7 @@ body {
   border-radius: 20px;
   border-width: 4px;
   display: flex;
+  opacity:1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -414,6 +415,7 @@ body {
 .home-panel {
   overflow: hidden;
   display: flex;
+  opacity:1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -423,6 +425,7 @@ body {
 }
 
 #panel-home {
+  display:flex;
   overflow: hidden;
   flex-direction: column;
   align-items: center;
@@ -434,6 +437,8 @@ body {
 }
 
 #app {
+  display:block;
+  opacity:1;
   overflow: hidden;
   padding: 2px;
   padding-top: calc(var(--header-height) + 2px);
@@ -449,7 +454,7 @@ body {
 .panel {
   overflow: hidden;
   margin-bottom: 20px;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.3s ease;
 }
 
@@ -458,12 +463,6 @@ body {
   opacity: 0;
   pointer-events: none;
   display: none;
-}
-
-.visible-panel {
-  overflow: hidden;
-  opacity: 1;
-  display: block;
 }
 
 .card {
