@@ -3,8 +3,8 @@
 function setFavicon() {
   const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const favicon = document.querySelector('link[rel="icon"]');
-  if(darkMode) favicon.href = 'https://neutroxity.me/faviconNRB.ico';
-  else favicon.href = 'https://neutroxity.me/faviconNRB.png';
+  if(darkMode) favicon.href = 'https://neutroxity.tech/faviconNRB.ico';
+  else favicon.href = 'https://neutroxity.tech/faviconNRB.png';
 }
 setFavicon();
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
@@ -37,13 +37,13 @@ window.addEventListener('load', () => {
 
 // ---------- Navigation ----------
 const navList = [
-  {key: "panel-home", url:"https://neutroxity.me/home/"},
-  {key: "panel-math", url:"https://neutroxity.me/math/"},
-  {key: "panel-physics", url:"https://neutroxity.me/physics/"},
-  {key: "panel-chemistry", url:"https://neutroxity.me/chemistry/"},
-  {key: "panel-games", url:"https://neutroxity.me/games/"},
-  {key: "panel-utilities", url:"https://neutroxity.me/utilities/"},
-  {key: "panel-info", url:"https://neutroxity.me/info/"},
+  {key: "panel-home", url:"https://neutroxity.tech/home/"},
+  {key: "panel-math", url:"https://neutroxity.tech/math/"},
+  {key: "panel-physics", url:"https://neutroxity.tech/physics/"},
+  {key: "panel-chemistry", url:"https://neutroxity.tech/chemistry/"},
+  {key: "panel-games", url:"https://neutroxity.tech/games/"},
+  {key: "panel-utilities", url:"https://neutroxity.tech/utilities/"},
+  {key: "panel-info", url:"https://neutroxity.tech/info/"},
 ];
 function switchTopPanel(e) {
   const targetPanelId = e.currentTarget.getAttribute("data-target");
@@ -89,6 +89,6 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     intro.remove();
     document.body.style.overflow = 'hidden';
-    window.location.href = "https://neutroxity.me/home/";
+    window.location.href = "https://neutroxity.tech/home/";
   }, 5000);
 });
