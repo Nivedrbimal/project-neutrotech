@@ -27,17 +27,19 @@ auth.onAuthStateChanged(user => {
     fb.currentUser = user;
     fb.db = firebase.database();
     console.log("Signed in as:", user.email);
-    showScreen(def.profileScreen);
+    if (window.location.href.indexOf("/info/") > -1)showScreen(def.profileScreen);
     startApp(user);
   } 
   else {
     fb.currentUser = null;
     fb.db = firebase.database();
     console.log("No user signed in");
-    showScreen(def.signUpLoginScreen);
+    if (window.location.href.indexOf("/info/") > -1) showScreen(def.signUpLoginScreen);
   }
-  showSnakeLeaderScores();
-  showJetShooterLeaderScores();
+  if (window.location.href.indexOf("/games/")>-1) {
+    showSnakeLeaderScores();
+    showJetShooterLeaderScores();
+  }
 });
 function startApp(user) {
   firebase.appCheck().getToken(false)
@@ -46,8 +48,8 @@ function startApp(user) {
       fb.db.ref(`users/${user.uid}/test`).set({ message: "Hello!" })
         .then(() => console.log("Data written successfully!"))
         .catch(err => console.error("Write failed:", err));
-        loadElementData();
-        def.neutropolisGame.classList.remove('hidden');
+        if (window.location.href.indexOf("/chemistry/") > -1)loadElementData();
+        if (window.location.href.indexOf("/games/")>-1)def.neutropolisGame.classList.remove('hidden');
       fb.db.ref(`users/${user.uid}/username`).on("value", snapshot => {
         console.log("Username:", snapshot.val());
         fb.currentUserName = snapshot.val();
@@ -57,7 +59,7 @@ function startApp(user) {
       });
     })
     .catch(err => {
-      if (err) console.error("App Check failed, unidentified domain")
+      if (err) console.error("App Check failed, error: ", err)
     });
 }
 function addUserData(newData) {
@@ -78,7 +80,6 @@ function getUserData() {
     })
     .catch(err => console.error("Failed to get data:", err));
 }
-document.body.style.overflow = 'hidden';
 
 // ---------- Supporter ----------
 function wait(ms) {

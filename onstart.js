@@ -3,21 +3,47 @@
 function setFavicon() {
   const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const favicon = document.querySelector('link[rel="icon"]');
-  if(darkMode) favicon.href = 'https://neutroxity.tech/faviconNRB.ico';
-  else favicon.href = 'https://neutroxity.tech/faviconNRB.png';
+  if(darkMode) favicon.href = 'https://neutroxity.me/faviconNRB.ico';
+  else favicon.href = 'https://neutroxity.me/faviconNRB.png';
 }
 setFavicon();
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setFavicon);
 
+function updateColor(varName, color) {
+  const root = document.documentElement;
+  root.style.setProperty(varName, color);
+}
+window.addEventListener('load', () => {
+  ['accent1', 'accent2', 'background1', 'background2', 'accent5', 'accent6'].forEach(key => {
+    const value = localStorage.getItem(key);
+    if (value) {
+      const varName =
+        key === 'accent1' ? '--accent1' :
+        key === 'accent2' ? '--accent2' :
+        key === 'background1' ? '--background1' :
+        key === 'background2' ? '--background2' :
+        key === 'accent5' ? '--accent5' :
+        '--accent6';
+      updateColor(varName, value);
+      const input = document.getElementById(
+        key === 'accent5' ? 'card1Picker' :
+        key === 'accent6' ? 'card2Picker' :
+        key + 'Picker'
+      );
+      if (input) input.value = value;
+    }
+  });
+});
+
 // ---------- Navigation ----------
 const navList = [
-  {key: "panel-home", url:"https://neutroxity.tech/home/"},
-  {key: "panel-math", url:"https://neutroxity.tech/math/"},
-  {key: "panel-physics", url:"https://neutroxity.tech/physics/"},
-  {key: "panel-chemistry", url:"https://neutroxity.tech/chemistry/"},
-  {key: "panel-games", url:"https://neutroxity.tech/games/"},
-  {key: "panel-utilities", url:"https://neutroxity.tech/utilities/"},
-  {key: "panel-info", url:"https://neutroxity.tech/info/"},
+  {key: "panel-home", url:"https://neutroxity.me/home/"},
+  {key: "panel-math", url:"https://neutroxity.me/math/"},
+  {key: "panel-physics", url:"https://neutroxity.me/physics/"},
+  {key: "panel-chemistry", url:"https://neutroxity.me/chemistry/"},
+  {key: "panel-games", url:"https://neutroxity.me/games/"},
+  {key: "panel-utilities", url:"https://neutroxity.me/utilities/"},
+  {key: "panel-info", url:"https://neutroxity.me/info/"},
 ];
 function switchTopPanel(e) {
   const targetPanelId = e.currentTarget.getAttribute("data-target");
@@ -63,6 +89,6 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     intro.remove();
     document.body.style.overflow = 'hidden';
-    window.location.href = "https://neutroxity.tech/home/";
+    window.location.href = "https://neutroxity.me/home/";
   }, 5000);
 });

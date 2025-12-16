@@ -10,7 +10,7 @@ function getId() {
     let ng_secret = null, ng_tries = 0;
 
     const snakeCanvas = document.getElementById("snakeCanvas");
-    let snakeCtx = snakeCtx = snakeCanvas.getContext("2d");
+    const snakeCtx = snakeCanvas.getContext("2d");
     const snakeScoreHolder = document.getElementById("snakeScore");
     const snakeLeftBtn = document.getElementById("leftSnake");
     const snakeUpBtn = document.getElementById("upSnake");
@@ -19,7 +19,7 @@ function getId() {
     const snakeStartBtn = document.getElementById("startSnakeBtn");
     const snakePauseBtn = document.getElementById("pauseSnakeBtn");
     const snakeSize = Math.floor(window.innerHeight * 0.65);
-    let snakeBox = snakeBox = Math.floor(snakeSize / 25);
+    let snakeBox = Math.floor(snakeSize / 25);
     let snake, snakeDirection, snakeFood, snakeScore, snakeFoodsEaten;
     let snakeSpecialFood = null;
     let snakeHighScore;
@@ -32,7 +32,7 @@ function getId() {
     let snakeRunning = false;
 
     const jetShooterCanvas = document.getElementById('jetShooterCanvas');
-    let jetShooterCtx = jetShooterCanvas.getContext("2d");
+    const jetShooterCtx = jetShooterCanvas.getContext("2d");
     const jetShooterScoreHolder = document.getElementById("jetShooterScore");
     const jetShooterShieldHolder = document.getElementById("jetShooterShield");
     const jetShooterBulletHolder = document.getElementById("jetShooterBullets");
@@ -44,7 +44,7 @@ function getId() {
     const jetShooterSize = Math.floor(window.innerHeight * 0.65);
     jetShooterCanvas.width = 100 * Math.floor(jetShooterSize / 100);
     jetShooterCanvas.height = 100 * Math.floor(jetShooterSize / 100);
-    let jetShooterBox = jetShooterBox = Math.floor(jetShooterCanvas.width / 100);
+    let jetShooterBox = Math.floor(jetShooterCanvas.width / 100);
     let jetShooterFrameId = null;
     let gameFrameId = null;
     let jetShooterMessage = "";
